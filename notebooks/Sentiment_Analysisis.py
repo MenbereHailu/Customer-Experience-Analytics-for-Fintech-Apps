@@ -36,8 +36,16 @@ def analyze_sentiment(text):
         return "UNKNOWN", 0.0
 
 # Load your reviews dataset
-df = pd.read_csv("data/cleaned_reviews_all.csv")  # replace with actual path if needed
-
+  # replace with actual path if needed
+try:
+    df = pd.read_csv('data/cleaned_reviews_all.csv')
+    print(f"✅ Successfully loaded {df.shape[0]} reviews.")
+except FileNotFoundError:
+    print("❌ File not found. Please check if 'data/cleaned_reviews_all.csv' exists.")
+except pd.errors.ParserError:
+    print("❌ Error parsing the CSV file. Check if the file is properly formatted.")
+except Exception as e:
+    print(f"❌ Unexpected error: {e}")
 # Apply pipeline
 df['language'] = df['review'].apply(detect_language)
 df['translated_review'] = df.apply(

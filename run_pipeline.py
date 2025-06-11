@@ -6,7 +6,7 @@ from scripts.sentiment_analysis import get_sentiment
 from scripts.thematic_analysis import extract_keywords, map_keywords_to_themes
 
 # Load your review dataset
-df = pd.read_csv("data/reviews_cleaned.csv")
+df = pd.read_csv("data/cleaned_reviews_all.csv")
 
 # Step 1: Preprocessing
 print("Cleaning and lemmatizing text...")
